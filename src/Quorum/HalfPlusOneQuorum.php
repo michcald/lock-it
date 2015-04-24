@@ -22,7 +22,7 @@ class HalfPlusOneQuorum implements QuorumInterface
 
     public function getQuorum()
     {
-        return min($this->total, ($this->total / 2 + 1));
+        return min($this->total, floor($this->total / 2 + 1));
     }
 
     public function isApproved($count)
