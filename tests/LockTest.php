@@ -5,7 +5,7 @@ use Michcald\LockIt\Quorum\HalfPlusOneQuorum;
 use Michcald\LockIt\Model\LockType;
 use Michcald\LockIt\Model\Lock;
 
-class LockTest extends \PHPUnit_Framework_TestCase
+class LockTesta extends \PHPUnit_Framework_TestCase
 {
     public function aaaatestExclusive()
     {

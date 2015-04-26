@@ -2,6 +2,8 @@
 
 namespace Michcald\LockIt\Model;
 
+use Michcald\LockIt\Exception\InvalidLockTypeException;
+
 abstract class LockType
 {
     /**
@@ -115,7 +117,7 @@ abstract class LockType
                     self::NULL,
                 );
             default:
-                throw new InvalidLockTypeException(); // @todo
+                throw new InvalidLockTypeException($type);
         }
     }
 

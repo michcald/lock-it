@@ -13,44 +13,50 @@ class PredisAdapter implements AdapterInterface
         $this->predis = $predis;
     }
 
-    public function extendLockLife($resourceName, $hash, $ttl)
+    public function del($key)
     {
+        return $this
+            ->predis
+            ->del($key)
+        ;
     }
 
-    public function lock($resourceName, $hash, $ttl, $type = LockType::NL)
+    public function exists($key)
     {
-        if (!$this->predis->exists($resourceName)) {
-            $this
-                ->predis
-                ->set($resourceName, $hash)
-            ;
-
-            $this
-                ->predis
-                ->expire($resourceName, $ttl)
-            ;
-        }
-
-        return true;
+        return $this
+            ->predis
+            ->exists($key)
+        ;
     }
 
-    public function unlock($resourceName, $hash)
+    public function get($key)
     {
-        if ($this->predis->exists($resourceName)) {
-            $currentHash = $this
-                ->predis
-                ->get($resourceName)
-            ;
+        return $this
+            ->predis
+            ->get($key)
+        ;
+    }
 
-            if ($currentHash == $hash) {
-                $this
-                    ->predis
-                    ->del($resourceName)
-                ;
-                return true;
-            }
-        }
+    public function keys()
+    {
+        throw new \Exception('todo');
+        // @todo
+    }
 
-        return false;
+    public function scan($prefix)
+    {
+        throw new \Exception('todo');
+        // @todo
+    }
+
+    public function set($key, $value, $ttl)
+    {
+        throw new \Exception('todo');
+        // @todo set the ttl
+
+        return $this
+            ->predis
+            ->set($key, $value)
+        ;
     }
 }

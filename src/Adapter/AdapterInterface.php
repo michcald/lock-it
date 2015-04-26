@@ -4,11 +4,13 @@ namespace Michcald\LockIt\Adapter;
 
 interface AdapterInterface
 {
-    public function set($key, $value, $ttl);
+    public function set($key, $value);
 
     public function del($key);
 
     public function get($key);
+
+    public function setTTL($ttl);
 
     public function exists($key);
 

@@ -4,13 +4,15 @@ namespace Michcald\LockIt\Model;
 
 interface LockInterface
 {
-    public function __construct($resourceName, $type, $token = null);
+    public function setResourceName($resourceName);
 
     public function getResourceName();
 
+    public function setType($type);
+
     public function getType();
 
-    public function getToken();
+    public function setToken($token);
 
-    public function getKey();
+    public function getToken();
 }

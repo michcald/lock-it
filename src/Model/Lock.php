@@ -12,11 +12,11 @@ class Lock implements LockInterface
 
     private $token;
 
-    public function __construct($resourceName, $type, $token = null)
+    public function setResourceName($resourceName)
     {
         $this->resourceName = $resourceName;
-        $this->type = $type;
-        $this->token = $token;
+
+        return $this;
     }
 
     public function getResourceName()
@@ -24,31 +24,27 @@ class Lock implements LockInterface
         return $this->resourceName;
     }
 
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
     public function getType()
     {
         return $this->type;
     }
 
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
     public function getToken()
     {
         return $this->token;
-    }
-
-    public function getKey()
-    {
-        if ($this->token) {
-            return sprintf(
-                '%s:%s:%s',
-                $this->resourceName,
-                $this->type,
-                $this->token
-            );
-        }
-
-        return sprintf(
-            '%s:%s',
-            $this->resourceName,
-            $this->type
-        );
     }
 }

@@ -18,7 +18,7 @@ class MemoryAdapter implements AdapterInterface
         return false;
     }
 
-    public function set($key, $value, $ttl)
+    public function set($key, $value)
     {
         $this->data[$key] = $value;
 
@@ -32,6 +32,12 @@ class MemoryAdapter implements AdapterInterface
         }
 
         return $this->data[$key];
+    }
+
+    public function setTTL($ttl)
+    {
+        // @todo
+        throw new \Exception('todo');
     }
 
     public function exists($key)
